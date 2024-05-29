@@ -1,0 +1,38 @@
+.option-btn {
+  width: 480px;
+  height: 74px;
+  top: 341px;
+  left: 769px;
+  gap: 0px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  margin-right: 6px;
+  font-size: 20px;
+}
+.li-el {
+  margin-left: 24px;
+}
+.correct {
+  background-color: #00b300;
+  color: white;
+}
+.wrong {
+  background-color: red;
+  color: white;
+}
+.selected-option {
+  background-color: cornflowerblue;
+  color: white;
+}
+@media(max-width: 576px) {
+  .option-btn {
+    width: 150px;
+    font-size: 10px;
+    height: 30px;
+  }
+  .c-w-img {
+    height: 20px;
+    width: 20px;
+  }
+}

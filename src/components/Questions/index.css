@@ -1,0 +1,131 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    91.08deg,
+    #dbbcc4 9.68%,
+    #f3dfd8 32.98%,
+    #d8bfd0 75.7%,
+    #b7b1d5 99.11%
+  );
+  height: 100vh;
+  width: 100%;
+}
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 350px; not needed as we add input elements the container grows in height*/
+  background: #f8fafc;
+
+  padding: 20px;
+  width: 850px;
+  height: 586px;
+  margin-top: 6px;
+  left: 147px;
+  gap: 0px;
+  border-radius: 8px 8px 8px 8px;
+  opacity: 0px;
+}
+.required-list {
+  list-style-type: upper-alpha;
+}
+.failure-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.retry-btn {
+  width: Hug (76px) px;
+  height: Hug (40px) px;
+  top: 779px;
+  left: 682px;
+  padding: 8px 20px 8px 20px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+}
+.ul-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.next-qtn-btn {
+  width: 136px;
+  height: 40px;
+  top: 813px;
+  left: 1013px;
+  padding: 8px 20px 8px 20px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nxt-btn-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  align-self: flex-end;
+  margin-left: 100px;
+}
+.question-count-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+.para {
+  width: 117px;
+  height: 76px;
+  top: 161px;
+  left: 195px;
+  gap: 0px;
+  border-radius: 8px;
+  opacity: 0px;
+  background-color: #d2a7b3;
+  font-size: 20px;
+}
+@media (max-width: 576px) {
+  .question-text {
+    font-size: 20px;
+  }
+  .ul-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .next-qtn-btn {
+    width: 120px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .para {
+    width: 80px;
+    height: 50px;
+    font-size: 15px;
+    margin-left: 2px;
+  }
+}

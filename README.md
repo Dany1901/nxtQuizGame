@@ -305,3 +305,4 @@ Returns a response containing the list of all questions
 # nxtQuizGame
 # nxtQuizGame
 # nxtQuizGame
+# nxtQuizGame

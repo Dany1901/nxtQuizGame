@@ -38,9 +38,8 @@ class CountdownTimer extends React.Component {
 
     return (
       <div>
-        
         <p>
-          Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
+          {minutes < 10 ? `0${minutes}` : minutes}:
           {seconds < 10 ? `0${seconds}` : seconds}
         </p>
       </div>

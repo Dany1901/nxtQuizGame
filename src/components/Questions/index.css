@@ -13,6 +13,23 @@
   height: 100vh;
   width: 100%;
 }
+.paragraph {
+  width: 51px;
+  height: 32px;
+  left: 228px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.question-page {
+  width: 69px;
+  height: 24px;
+  top: 169px;
+  left: 219px;
+  bottom: 0px;
+  gap: 0px;
+  opacity: 0px;
+}
 .home-content {
   display: flex;
   flex-direction: column;

@@ -14,7 +14,7 @@ const TerminationPage = props => {
   return (
     <div className="termination-container">
       <div>
-        <h1>Time Completed</h1>
+        <p>Time Completed</p>
         <div>
           <button
             type="button"

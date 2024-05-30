@@ -40,7 +40,9 @@ const Options = props => {
     <li className="li-el">
       <button
         type="button"
-        onClick={e => a(e, optionDetails.is_correct, optionDetails.id)}
+        onClick={e =>
+          a(e, optionDetails.is_correct, optionDetails.id, optionDetails)
+        }
         className="option-btn"
       >
         {text}

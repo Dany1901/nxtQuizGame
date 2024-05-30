@@ -133,25 +133,24 @@ class Questions extends Component {
   }
 
   renderFailureView = () => (
-    <div className="product-details-failure-view-container">
-      <img
-        alt="failure view"
-        src="https://assets.ccbp.in/frontend/react-js/nxt-assess-failure-img.png"
-        className="failure-view-image"
-      />
-      <h1 className="product-not-found-heading">Something went wrong</h1>
-      <p className="para-element">Our servers are busy please try again</p>
-
-      <button
-        type="button"
-        className="retry-btn"
-        onClick={this.handleReloadClick}
-      >
-        Retry
-      </button>
+    <div className="failure-container">
+      <div>
+        <img
+          src="https://res.cloudinary.com/dedvz7flb/image/upload/v1713586288/Group_7519_ee7dlx.png"
+          alt="Images"
+        />
+        <h1>Something went wrong</h1>
+        <p>Our server are busy please try again</p>
+        <button
+          type="button"
+          onClick={this.handleReloadClick}
+          className="retry-btn"
+        >
+          Retry
+        </button>
+      </div>
     </div>
   )
-
   getTheData = ans => {
     this.setState({selectedData: ans})
   }
@@ -206,13 +205,19 @@ class Questions extends Component {
       <div className="container">
         <Header />
         <div className="question-count-container">
-          <p className="para">
-            Question {activeId + 1}/{questionsList.length}
+          <div className="para">
+            <p className="question-page">Question</p>
+            <p className="paragraph">
+              {activeId + 1}/{questionsList.length}
+            </p>
+          </div>
+          <p>
+            <Timer />
           </p>
         </div>
         {requiredList !== undefined && (
           <div>
-            <h1>{requiredList.questionText}</h1>
+            <p className="question-text">{requiredList.questionText}</p>
             <ul style={{listStyleType: 'upper-alpha'}} className="ul-container">
               {requiredList.options.map(eachOption => (
                 <OptionsPage
@@ -279,3 +284,4 @@ class Questions extends Component {
   }
 }
 export default Questions
+Questions

@@ -17,7 +17,7 @@
   margin-right: 6px;
 }
 .score {
-  color: #0EA5E9;
+  color: #0ea5e9;
   margin-top: 14px;
   margin-left: 4px;
 }
@@ -47,30 +47,30 @@
   align-items: center;
 }
 .report-btn {
-  width: Hug (86px)px;
-height: Hug (40px)px;
-top: 757px;
-left: 678px;
-padding: 8px 20px 8px 20px;
-gap: 10px;
-border-radius: 4px 0px 0px 0px;
-opacity: 0px;
-background-color: #0EA5E9;
-color: white;
-border: none;
-border-radius: 8px;
-cursor: pointer;
+  width: Hug (86px) px;
+  height: Hug (40px) px;
+  top: 757px;
+  left: 678px;
+  padding: 8px 20px 8px 20px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 .unattempt {
   width: 380px;
-height: 64px;
-top: 630px;
-left: 195px;
-gap: 0px;
-border-radius: 8px 0px 0px 0px;
-opacity: 0px;
-border: none;
-margin: 2px;
+  height: 64px;
+  top: 630px;
+  left: 195px;
+  gap: 0px;
+  border-radius: 8px 0px 0px 0px;
+  opacity: 0px;
+  border: none;
+  margin: 2px;
 }
 .correct-ans {
   background-color: greenyellow;

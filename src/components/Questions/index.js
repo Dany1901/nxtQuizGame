@@ -12,6 +12,7 @@ const apiConstants = {
   loading: 'LOADING',
   initial: 'INITIAL',
 }
+
 class Questions extends Component {
   state = {
     questionsList: [],
@@ -27,20 +28,28 @@ class Questions extends Component {
     unattemptedQuestionsList: [],
     activeIndex: 0,
     buttonClickedddd: false,
+    time: 30,
+    setTimer: 30,
+    isTrue: false,
   }
 
   componentDidMount() {
     this.getQuestions()
+    this.timerId = setInterval(this.statusChange, 1000)
   }
 
   isCorrectClicked = isT => {
     this.setState(prevState => ({correctAns: prevState.correctAns + 1}))
     const {correctAns} = this.state
+    clearInterval(this.timerId)
+    this.setState({isTrue: false})
   }
 
   isWrongClicked = isW => {
     this.setState(prevState => ({wrongAns: prevState.wrongAns + 1}))
     const {wrongAns} = this.state
+    clearInterval(this.timerId)
+    this.setState({isTrue: false})
   }
 
   getQuestions = async () => {
@@ -68,6 +77,17 @@ class Questions extends Component {
     }
   }
 
+  statusChange = () => {
+    const {time} = this.state
+    if (time !== 0) {
+      this.setState(prevState => ({time: prevState.time - 1}))
+    } else {
+      clearInterval(this.timerId)
+      this.setState({isTrue: true})
+      this.onClickNextQuestion()
+    }
+  }
+
   getUnAttemptedList = () => {
     const {
       nxtBtnClicked,
@@ -91,6 +111,26 @@ class Questions extends Component {
 
   getButtonStatus = status => {
     this.setState({isButtonClicked: true})
+    clearInterval(this.timerId)
+    this.setState({isTrue: false})
+  }
+
+  timerSet = () => {
+    this.setState({
+      isTrue: false,
+      time: 30,
+    })
+    this.timerId = setInterval(this.statusChange, 1000)
+  }
+
+  onStartTimer = () => {
+    this.timeInterval = setInterval(this.statusChange, 1000)
+    this.setState({isTrue: true})
+  }
+
+  onResetTimer = () => {
+    clearInterval(this.timeInterval)
+    this.setState({isTrue: false, time: 30})
   }
 
   onClickNextQuestion = () => {
@@ -101,7 +141,15 @@ class Questions extends Component {
       buttonClickedddd,
       attempted,
     } = this.state
+    const {time} = this.state
     const {questionsList} = this.state
+    if (time !== 0) {
+      this.setState(prevState => ({time: prevState.time - 1}))
+    } else {
+      clearInterval(this.timerId)
+      this.setState({isTrue: true})
+    }
+
     if (nxtBtnClicked === true && isButtonClicked === true) {
       this.setState(prevState => ({
         attempted: prevState.attempted + 1,
@@ -120,6 +168,8 @@ class Questions extends Component {
         this.getUnAttemptedList(),
       )
     }
+    this.onResetTimer()
+    this.onStartTimer()
   }
 
   getIsCorrect = isC => {
@@ -151,6 +201,7 @@ class Questions extends Component {
       </div>
     </div>
   )
+
   getTheData = ans => {
     this.setState({selectedData: ans})
   }
@@ -198,6 +249,7 @@ class Questions extends Component {
       attempted,
       correctAns,
       unattemptedQuestionsList,
+      time,
     } = this.state
     console.log(unattemptedQuestionsList)
     const requiredList = questionsList[activeId]
@@ -211,9 +263,7 @@ class Questions extends Component {
               {activeId + 1}/{questionsList.length}
             </p>
           </div>
-          <p>
-            <Timer />
-          </p>
+          <p>{time}</p>
         </div>
         {requiredList !== undefined && (
           <div>
@@ -284,4 +334,3 @@ class Questions extends Component {
   }
 }
 export default Questions
-Questions

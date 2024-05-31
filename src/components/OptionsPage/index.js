@@ -6,6 +6,7 @@ const Options = props => {
     optionDetails,
     isCorrectss,
     getIsCorrect,
+    optionType,
     isTrue,
     getButtonStatus,
     isCorrectClicked,

@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {withRouter} from 'react-router-dom'
+import Header from '../Header'
 import './index.css'
 
 class Results extends Component {
@@ -21,12 +22,11 @@ class Results extends Component {
 
   renderReportPage = () => {
     const {location} = this.props
-    const {cA, wA, total, uAL} = location.state
-    const attempted = cA - 1 + (wA - 1)
-    const unattempted = total - attempted
+    const {cA, wA, total, uAL, Attemp} = location.state
+    const wrongAns = total - cA + 1
+    const unattempted = total - (wrongAns + cA)
     const percentage = ((cA - 1) / total) * 100
     const unattemptedNotEqualToZero = unattempted !== 0
-    console.log(unattempted)
     return (
       <div className="result-container">
         <div className="first-result-container">
@@ -50,7 +50,7 @@ class Results extends Component {
                 src="https://res.cloudinary.com/dedvz7flb/image/upload/v1713844706/Close_-_16px_cbmpaw.png"
                 alt="wrong"
               />
-              <p>{wA} Wrong Answers</p>
+              <p>{total - cA + 1} Wrong Answers</p>
             </div>
             <div className="r-container">
               <img
@@ -70,69 +70,42 @@ class Results extends Component {
   onRedirect = () => {
     const {history} = this.props
     const {location} = this.props
-    const {cA, wA, total, uAL} = location.state
-    const attempted = cA - 1 + (wA - 1)
-    const unattempted = total - attempted
+    const {cA, wA, total, uAL, Attemp} = location.state
+    const unattempted = total - Attemp
     const percentage = ((cA - 1) / total) * 100
-    console.log(unattempted)
     history.push('/report', {
       correct: cA,
       wrong: wA,
-      attempt: attempted - 1,
+      attempt: Attemp,
       unattempt: unattempted - 1,
       tot: total,
       percent: percentage,
       uL: uAL,
+      at: Attemp,
     })
   }
 
   renderPercentagePage = () => {
     const {location} = this.props
-    const {cA, wA, total} = location.state
+    const {cA, wA, total, Attemp} = location.state
     const attempted = cA - 1 + (wA - 1)
+    const wrongggg = total - cA
     const unattempted = total - attempted
     const percentage = ((cA - 1) / total) * 100
     return (
       <div>
-        <img
-          src="https://res.cloudinary.com/dedvz7flb/image/upload/v1713851019/Group_pkfmta.png"
-          alt="lose-page"
-        />
-        <h1>You lose!</h1>
-        <h1>{percentage}% Correctly Answered</h1>
-        <p>
-          You attempted {cA} out of {total} questions as correct
-        </p>
-        <button type="button" onClick={this.onRedirect}>
-          Report
-        </button>
-      </div>
-    )
-  }
-
-  renderCongratulationsPage = () => {
-    const {location} = this.props
-    const {cA, wA, total} = location.state
-    const attempted = cA - 1 + wA
-    const unattempted = total - attempted - 1
-    const percentage = ((cA - 1) / total) * 100
-    return (
-      <div className="trophy-container">
+        <Header />
         <div>
           <img
-            src="https://res.cloudinary.com/dedvz7flb/image/upload/v1713853288/trophy_1_2_ptyxct.png"
-            alt="trophy"
+            src="https://assets.ccbp.in/frontend/react-js/quiz-game-lose-img.png"
+            alt="lose"
           />
-          <h1>Congrats!</h1>
-          <p>{percentage}% Correctly Answered</p>
+          <h1>You lose!</h1>
+          <h1>{percentage}% Correctly Answered</h1>
           <p>
-            You attempted {attempted} out of {total} questions as correct
+            You attempted {cA - 1} out of {total} questions as correct
           </p>
-          <button
-            type="button"
-            className="report-btn"
-            onClick={this.onRedirect}
-          >
+          <button type="button" onClick={this.onRedirect}>
             Report
           </button>
         </div>
@@ -140,16 +113,49 @@ class Results extends Component {
     )
   }
 
+  renderCongratulationsPage = () => {
+    const {location} = this.props
+    const {cA, Attemp, total} = location.state
+    const wrongggg = total - Attemp
+    const unattempted = total - Attemp
+    const percentage = ((cA - 1) / total) * 100
+    return (
+      <div>
+        <Header />
+        <div className="trophy-container">
+          <div>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/quiz-game-congrats-trophy-img.png"
+              alt="won"
+            />
+            <h1>Congrats</h1>
+            <p>{percentage}% Correctly Answered</p>
+            <p>Quiz completed successfully.</p>
+            <p>
+              You attempted {cA - 1} out of {total} questions as correct
+            </p>
+            <button
+              type="button"
+              className="report-btn"
+              onClick={this.onRedirect}
+            >
+              Report
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const {location} = this.props
-    const {cA, wA, total} = location.state
-    const attempted = cA - 1 + (wA - 1)
-    const unattempted = total - attempted - 1
+    const {cA, Attemp, total} = location.state
+    const unattempted = total - Attemp
     const percentage = ((cA - 1) / total) * 100
-    if (percentage <= 50 && unattempted !== 0) {
+    if (percentage < 60 && unattempted !== 0) {
       return this.renderPercentagePage()
     }
-    if (percentage >= 90) {
+    if (percentage >= 60) {
       return this.renderCongratulationsPage()
     }
     return this.renderReportPage()

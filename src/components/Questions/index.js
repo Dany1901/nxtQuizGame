@@ -2,8 +2,6 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import OptionsPage from '../OptionsPage'
-import Results from '../Results'
-import Timer from '../Timer'
 import './index.css'
 
 const apiConstants = {
@@ -186,11 +184,11 @@ class Questions extends Component {
     <div className="failure-container">
       <div>
         <img
-          src="https://res.cloudinary.com/dedvz7flb/image/upload/v1713586288/Group_7519_ee7dlx.png"
-          alt="Images"
+          src="https://assets.ccbp.in/frontend/react-js/nxt-assess-failure-img.png"
+          alt="failure view"
         />
         <h1>Something went wrong</h1>
-        <p>Our server are busy please try again</p>
+        <p>Our servers are busy please try again</p>
         <button
           type="button"
           onClick={this.handleReloadClick}

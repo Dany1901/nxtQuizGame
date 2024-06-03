@@ -4,15 +4,8 @@ import './index.css'
 class ReportPage extends Component {
   render() {
     const {location} = this.props
-    const {
-      correct,
-      wrong,
-      tot,
-      percentage,
-      attempt,
-      unattempt,
-      uL,
-    } = location.state
+    const {correct, wrong, tot, percentage, attempt, unattempt, uL} =
+      location.state
     return (
       <div>
         <h1>Report Page</h1>

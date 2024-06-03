@@ -73,7 +73,7 @@ class Results extends Component {
     const {cA, wA, total, uAL, Attemp} = location.state
     const unattempted = total - Attemp
     const percentage = ((cA - 1) / total) * 100
-    history.push('/report', {
+    history.push('/game-report', {
       correct: cA,
       wrong: wA,
       attempt: Attemp,

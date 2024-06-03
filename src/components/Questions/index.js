@@ -228,7 +228,7 @@ class Questions extends Component {
       attempted,
     } = this.state
     await this.getUnAttemptedList()
-    history.push('/r', {
+    history.push('/game-results', {
       cA: correctAns,
       wA: wrongAns,
       total: questionsList.length,

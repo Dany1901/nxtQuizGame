@@ -19,8 +19,8 @@ const App = () => (
       <Route exact path="/q" component={Questions} />
       <Route exact path="/timer" component={Timer} />
       <Route exact path="/t" component={TerminationPage} />
-      <Route exact path="/r" component={Results} />
-      <Route exact path="/report" component={ReportPage} />
+      <Route exact path="/game-results" component={Results} />
+      <Route exact path="/game-report" component={ReportPage} />
       <Route path="/not-found" component={NotFound} />
       <Redirect to="not-found" />
     </Switch>

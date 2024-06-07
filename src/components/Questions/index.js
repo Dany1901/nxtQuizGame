@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import OptionsPage from '../OptionsPage'
+import Results from '../Results'
 import './index.css'
 
 const apiConstants = {
@@ -50,6 +51,17 @@ class Questions extends Component {
     this.setState({isTrue: false})
   }
 
+  statusChange = () => {
+    const {time} = this.state
+    if (time !== 0) {
+      this.setState(prevState => ({time: prevState.time - 1}))
+    } else {
+      clearInterval(this.timerId)
+      this.setState({isTrue: true})
+      this.onClickNextQuestion()
+    }
+  }
+
   getQuestions = async () => {
     this.setState({apiStatus: apiConstants.loading})
     const url = 'https://apis.ccbp.in/assess/questions'
@@ -70,19 +82,8 @@ class Questions extends Component {
         apiStatus: apiConstants.success,
       })
       const {questionsList} = this.state
-    } else if (response.ok === 401) {
-      this.setState({apiStatus: apiConstants.failure})
-    }
-  }
-
-  statusChange = () => {
-    const {time} = this.state
-    if (time !== 0) {
-      this.setState(prevState => ({time: prevState.time - 1}))
     } else {
-      clearInterval(this.timerId)
-      this.setState({isTrue: true})
-      this.onClickNextQuestion()
+      this.setState({apiStatus: apiConstants.failure})
     }
   }
 
